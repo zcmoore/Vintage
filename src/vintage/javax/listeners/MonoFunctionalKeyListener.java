@@ -27,6 +27,7 @@ import java.util.function.Consumer;
  * In the above sample, this::method is a method with the signature
  * <code>void method(KeyEvent event)</code>
  * 
+ * @see FunctionalKeyListener
  * @author Moore, Zachary
  *
  */

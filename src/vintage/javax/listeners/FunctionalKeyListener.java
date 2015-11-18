@@ -12,11 +12,16 @@ import java.util.function.Consumer;
  * default. If an event is specified, it will be called whenever the trigger is activated.
  * Otherwise, the trigger will be ignored.
  * <p>
- * Note: getter functions for all event listeners are provided for scalability. However,
+ * If you require a listener that will fire whenever <em>any</em> key trigger is activated
+ * (i.e. {@link #keyPressed(KeyEvent)}, {@link #keyReleased(KeyEvent)}, OR
+ * {@link #keyTyped(KeyEvent)}), see {@link MonoFunctionalKeyListener}
+ * <p>
+ * Note: getter functions for all event listeners are provided for completeness. However,
  * in most cases the setters will be sufficient. Getters, in almost all circumstances,
  * should <b>not</b> be used to call the specified function. Rather, there may be cases
  * where the event needs to be compared against another strategy.
  * 
+ * @see MonoFunctionalKeyListener
  * @author Moore, Zachary
  *
  */
