@@ -4,6 +4,8 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.function.Consumer;
 
+import vintage.javax.routers.Subroutine;
+
 /**
  * Allows a function to be specified as a {@link KeyListener}. The function will be
  * invoked upon all key events, including {@link #keyPressed(KeyEvent)},
@@ -34,6 +36,28 @@ import java.util.function.Consumer;
 @FunctionalInterface
 public interface MonoFunctionalKeyListener extends KeyListener, Consumer<KeyEvent>
 {
+	public static MonoFunctionalKeyListener routeTo(Consumer<KeyEvent> consumer)
+	{
+		return new MonoFunctionalKeyListener() {
+			@Override
+			public void accept(KeyEvent event)
+			{
+				consumer.accept(event);
+			}
+		};
+	}
+	
+	public static MonoFunctionalKeyListener routeTo(Subroutine subroutine)
+	{
+		return new MonoFunctionalKeyListener() {
+			@Override
+			public void accept(KeyEvent event)
+			{
+				subroutine.call();
+			}
+		};
+	}
+	
 	@Override
 	default void keyPressed(KeyEvent event)
 	{
